@@ -1,4 +1,5 @@
 # Farmland-Path-Planning
+## 提供了ROS2-humble分支-已经集成到ros2系统，切换分支查看
 1.提供了简单的python接口可运行：s_rote.py 和 o_rote.py
 
 2.上传坐标点时，请按照下图原理解析，按照顺序确定田块的边界点p1 ,p2,p3,p4（必须按照顺序）
