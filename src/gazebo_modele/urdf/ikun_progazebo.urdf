@@ -1,0 +1,491 @@
+<?xml version="1.0"?>
+<robot name="fishbot">
+
+
+  <!-- Robot Footprint -->
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="bb_link">
+  	<visual>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.6 0.8 0.1" />
+      </geometry>
+      <material name="blue">
+      	<color rgba="0.1 0.1 1.0 0.5" /> 
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		<box size="1.2 0.8 0.4" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0122666" ixy="0" ixz="0" iyy="0.0122666" iyz="0" izz="0.02"/>
+    </inertial>
+  </link>
+  <gazebo reference="bb_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <joint name="bb_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="bb_link" />
+      <origin xyz="0.4 0 0.14" />
+  </joint>
+
+
+  <!-- base link -->
+  <link name="base_link">
+  	<visual>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.81 0.4 0.4" />
+      </geometry>
+      <material name="blue">
+      	<color rgba="0.1 0.1 1.0 0.5" /> 
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		<box size="1.1 0.4 0.4" />
+      </geometry>
+      <material name="blue">
+      	<color rgba="0.1 0.1 1.0 0.5" /> 
+      </material>
+    </collision>
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.0122666" ixy="0" ixz="0" iyy="0.0122666" iyz="0" izz="0.02"/>
+    </inertial>
+  </link>
+    
+  <!-- laser link -->
+  <link name="velodyne">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.06" radius="0.1"/>
+      </geometry>
+      <material name="blue_material">
+        <color rgba="0.0 0.0 1.0 1.0" /> 
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.03" radius="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+    <mass value="0.1"/>
+      <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+    </inertial>
+  </link>
+  
+  <!-- laser joint -->
+  <joint name="lidar_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="velodyne" />
+      <origin xyz="0 0 0.26" />
+  </joint>
+  <gazebo reference="velodyne">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <link name="imu_link">
+  	<visual>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		    <cylinder length="0.03" radius="0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		    <cylinder length="0.03" radius="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+        <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+      </inertial>
+  </link>
+
+  <!-- imu joint -->
+  <joint name="imu_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="imu_link" />
+      <origin xyz="0 0 0.215" />
+  </joint>
+
+  <link name="navsat_link">
+  	<visual>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		    <cylinder length="0.03" radius="0.1"/>
+      </geometry>
+      <material name="silver_material">
+        <color rgba="0.75 0.75 0.75 1.0" />  <!-- 更改为银白色 -->
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.0" rpy="0 0 0"/>
+      <geometry>
+		    <cylinder length="0.03" radius="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+        <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+      </inertial>
+  </link>
+
+  <joint name="navsat_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="navsat_link" />
+      <origin xyz="0 0 0.305" />
+  </joint>
+
+
+  <link name="left_wheel_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+        <geometry>
+          <cylinder length="0.2" radius="0.2"/>
+        </geometry>
+          <material name="black">
+            <color rgba="0.0 0.0 0.0 1.0" /> 
+          </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+        <geometry>
+          <cylinder length="0.2" radius="0.2"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.2"/>
+          <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+        </inertial>
+  </link>
+  <gazebo reference="left_wheel_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+    
+  <link name="right_wheel_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+        <geometry>
+          <cylinder length="0.2" radius="0.2"/>
+        </geometry>
+          <material name="black">
+            <color rgba="0.0 0.0 0.0 0.5" /> 
+          </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+        <geometry>
+          <cylinder length="0.2" radius="0.2"/>
+        </geometry>
+          <material name="black">
+            <color rgba="0.0 0.0 0.0 0.5" /> 
+          </material>
+      </collision>
+      <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+    </inertial>
+  </link>
+  <gazebo reference="right_wheel_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+    
+  <joint name="left_wheel_joint" type="continuous">
+  <!-- <joint name="left_wheel_joint" type="fixed"> -->
+      <parent link="base_link" />
+      <child link="left_wheel_link" />
+      <origin xyz="-0.5 0.5 -0.11" />
+      <axis xyz="0 1 0" />
+  </joint>
+
+  <joint name="right_wheel_joint" type="continuous">
+  <!-- <joint name="right_wheel_joint" type="fixed"> -->
+      <parent link="base_link" />
+      <child link="right_wheel_link" />
+      <origin xyz="-0.5 -0.5 -0.11" />
+      <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="caster_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+        <geometry>
+            <sphere radius="0.2"/>
+        </geometry>
+        <material name="default_material">
+          <color rgba="0.5 0.5 0.5 1.0" />  <!-- 默认颜色，可省略 -->
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.57079 0 0"/>
+        <geometry>
+            <sphere radius="0.2"/>
+        </geometry>
+          <material name="black">
+            <color rgba="0.0 0.0 0.0 1.0" /> 
+          </material>
+      </collision>
+      <inertial>
+      <mass value="0.4"/>
+      <inertia ixx="0.000190416666667" ixy="0" ixz="0" iyy="0.0001904" iyz="0" izz="0.00036"/>
+    </inertial>
+  </link>
+    
+  <joint name="caster_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="caster_link" />
+      <origin xyz="0.2 0.0 -0.11" />
+      <axis xyz="0 1 0" />
+  </joint>
+
+  <gazebo reference="caster_link">
+    <material>Gazebo/Heizi</material>
+  </gazebo>
+  <gazebo reference="caster_link">
+    <mu1 value="0.0"/>
+    <mu2 value="0.0"/>
+    <kp value="1000000.0" />
+    <kd value="10.0" />
+  </gazebo>
+
+  
+
+
+  <gazebo>
+    <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+          <ros>
+            <namespace>/</namespace>
+            <remapping>cmd_vel:=cmd_vel</remapping>
+            <!-- <remapping>odom:=/lio_sam/imu/odometry</remapping> -->
+            <remapping>odom:=/odom</remapping>
+          </ros>
+          <update_rate>100</update_rate>
+          <!-- wheels -->
+          <left_joint>left_wheel_joint</left_joint>
+          <right_joint>right_wheel_joint</right_joint>
+          <!-- kinematics -->
+          <wheel_separation>0.2</wheel_separation>
+          <wheel_diameter>0.3</wheel_diameter>
+          <!-- limits -->
+          <max_wheel_torque>60</max_wheel_torque>
+          <max_wheel_acceleration>3.0</max_wheel_acceleration>
+          <!-- output -->
+          <publish_odom>true</publish_odom>
+          <publish_odom_tf>fasle</publish_odom_tf>
+          <publish_wheel_tf>fasle</publish_wheel_tf>
+          <odometry_frame>odom</odometry_frame>
+          <robot_base_frame>base_link</robot_base_frame>
+      </plugin>
+    </gazebo> 
+
+    <gazebo reference="imu_link">
+      <sensor name="imu_sensor" type="imu">
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+          <ros>
+            <namespace>/</namespace>
+            <remapping>~/out:=/imu_raw</remapping>
+          </ros>
+          <initial_orientation_as_reference>false</initial_orientation_as_reference>
+        </plugin>
+        <always_on>true</always_on>
+        <update_rate>500</update_rate>
+        <visualize>true</visualize>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>2e-4</stddev>
+                <bias_mean>0.0000075</bias_mean>
+                <bias_stddev>0.0000008</bias_stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0.0</mean>
+                <stddev>1.7e-2</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </gazebo>
+
+  <gazebo reference="velodyne">
+      <sensor name="laser_sensor" type="ray">
+      <always_on>true</always_on>
+      <visualize>false</visualize>
+      <update_rate>10</update_rate>
+      <pose>0 0 0.26 0 0 0</pose>
+      <ray>
+          <scan>
+            <horizontal>
+              <samples>1800</samples>
+              <resolution>1.000000</resolution>
+              <min_angle>0.000000</min_angle>
+              <max_angle>6.28320000</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>16</samples>
+              <resolution>1.000000</resolution>
+              <min_angle>-0.261800000</min_angle>
+              <max_angle>0.26180</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>1.3</min>
+            <max>40.5</max>
+            <resolution>0.015000</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+      </ray>
+
+      <plugin name="laserscan" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <namespace>/ray</namespace>
+          <remapping>~/out:=/points_raw</remapping>
+        </ros>
+        <output_type>sensor_msgs/PointCloud2</output_type>
+        <min_intensity>100.0</min_intensity>
+        <frame_name>velodyne</frame_name>
+      </plugin>
+      </sensor>
+    </gazebo>
+  <gazebo reference="navsat_link">
+      <sensor name="my_gps" type="gps">
+      <!-- ensure the sensor is active (required) -->
+          <always_on>true</always_on>
+          <update_rate>30</update_rate>
+          <plugin name="my_gps_plugin" filename="libgazebo_ros_gps_sensor.so">
+            <ros>
+              <!-- publish to /gps/data -->
+              <namespace>/gps</namespace>
+              <remapping>~/out:=/gps/fix</remapping>
+            </ros>
+        </plugin>
+      </sensor>
+    </gazebo>
+
+
+
+  <gazebo reference="bb_link"> <!-- 替换为你的摄像头连杆名称 -->
+       <sensor name="camera_sensor" type="camera">
+        <update_rate>30.0</update_rate>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100.0</far>
+          </clip>
+          <distortion>
+            <k1>0.0</k1>
+            <k2>0.0</k2>
+            <k3>0.0</k3>
+            <p1>0.0</p1>
+            <p2>0.0</p2>
+          </distortion>
+        </camera>
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+      
+        <plugin name="gazebo_ros_camera" filename="libgazebo_ros_camera.so">
+          <!-- 1. 你提供的核心参数：命名空间、话题重映射、相机标识 -->
+          <ros>
+            <namespace>/</namespace>
+            <remapping>image_raw:=image</remapping>
+            <remapping>camera_info:=custom_info</remapping>
+            <remapping>image_trigger:=custom_trigger</remapping>
+          </ros>
+          <camera_name>custom_camera</camera_name>
+          <frame_name>custom_frame</frame_name>
+          <triggered>false</triggered>
+          <hack_baseline>0.07</hack_baseline>
+          <!-- 2. 官方可调整参数：图像属性与帧率 -->
+          <image_width>640</image_width> <!-- 官方默认640，可改800/1280等 -->
+          <image_height>480</image_height> <!-- 官方默认480，可改720等 -->
+          <image_format>R8G8B8</image_format> <!-- 官方默认，支持RGB/YUV等格式 -->
+          <update_rate>30.0</update_rate> <!-- 官方默认30Hz，可改10/60等 -->
+          <!-- 3. 官方可调整参数：相机视场角与裁剪范围 -->
+          <horizontal_fov>1.047</horizontal_fov> <!-- 官方默认60°（弧度值），可改1.57（90°） -->
+          <clip_near>0.1</clip_near> <!-- 官方默认0.1m，近于该值的物体不成像 -->
+          <clip_far>100.0</clip_far> <!-- 官方默认100m，远于该值的物体不成像 -->
+          <!-- 4. 官方可调整参数：相机内参（焦距与光学中心） -->
+          <fx>420.0</fx> <!-- 官方默认基于分辨率计算，可根据实际校准值修改 -->
+          <fy>420.0</fy>
+          <cx>320.0</cx> <!-- 640/2，与image_width对应 -->
+          <cy>240.0</cy> <!-- 480/2，与image_height对应 -->
+          <!-- 5. 官方可调整参数：畸变参数（无畸变设为0，有畸变填校准值） -->
+          <distortion_k1>0.0</distortion_k1>
+          <distortion_k2>0.0</distortion_k2>
+          <distortion_k3>0.0</distortion_k3>
+          <distortion_p1>0.0</distortion_p1>
+          <distortion_p2>0.0</distortion_p2>
+        </plugin>
+      </sensor>
+    </gazebo>
+
+</robot>
