@@ -24,3 +24,5 @@ ros2 launch gazebo_modele mapviz.launch.py
 
 
 If you want to know, please contact: clibang2022@163.com
+视频地址：
+https://www.bilibili.com/video/BV1n5n3zNERB/?spm_id_from=333.1365.list.card_archive.click&vd_source=134c12873ff478ea447a06d652426f8f
