@@ -9,8 +9,6 @@ ros2 launch gazebo_modele gazebo.launch.py
 <img width="1476" height="804" alt="image" src="https://github.com/user-attachments/assets/150644d9-4a39-466f-989b-68955e358afb" />
 包含3维激光雷达，imu，gps，相机传感器。
 
-<img width="444" height="978" alt="image" src="https://github.com/user-attachments/assets/dc8f0d25-a805-4e14-ab41-41333b799c30" />
-包含控制界面：
 
 ###  启动导航
 导航沿用之前的工艺详情：https://github.com/Ming2zun/Pure-tracking-slam-automatic-navigation-system
