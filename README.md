@@ -1,4 +1,5 @@
 # Farmland-Path-Planning
+- **版本**: 1.0
 ## 提供了ROS2-humble分支-已经集成到ros2系统，切换分支查看
 
 <img width="398" height="273" alt="ChatGPT Image 2025年9月29日 10_26_05" src="https://github.com/user-attachments/assets/2fc6db5e-63c0-4ebc-b1a9-ed1903825092" />
