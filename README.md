@@ -1,6 +1,8 @@
 # Farmland-Path-Planning
 ## 提供了ROS2-humble分支-已经集成到ros2系统，切换分支查看
-![Uploading ChatGPT Image 2025年9月29日 10_26_05.png…]()
+
+<img width="398" height="273" alt="ChatGPT Image 2025年9月29日 10_26_05" src="https://github.com/user-attachments/assets/2fc6db5e-63c0-4ebc-b1a9-ed1903825092" />
+
 
 1.提供了简单的python接口可运行：s_rote.py 和 o_rote.py
 
