@@ -1,6 +1,8 @@
 # Farmland-Path-Planning
+- **版本**:ROS2 humble 1.0
 ## 这里是ROS2—humble分支，集成路径规划加导航
 # 需要安装：mapviz，pyqt6，pyside6
+<img width="398" height="273" alt="ChatGPT Image 2025年9月29日 10_26_05-1" src="https://github.com/user-attachments/assets/37fa6161-730c-4a7a-8392-20bebfe0a520" />
 
 ###  启动仿真
 ```
