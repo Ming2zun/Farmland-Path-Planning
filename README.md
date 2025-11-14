@@ -21,10 +21,10 @@ Framland-Path-Planning algorithm can pass in any farmland boundary point, and ge
 
 If you want to know, please contact: clibang2022@163.com
 
-## Farmland-Path-Planning即将迎来升级版本：Farmland-Path-Planning2（FPP2）
+## FPP即将迎来升级版本：Farmland-Path-Planning2（FPP2）
 # FPP2现与“丘沃智能科技有限公司”合作赋能农机田间自动路径规划
 # FPP2属于私密状态暂不开源
-# 提供了Ω型转弯
+# 提供了Ω型转弯（覆盖率96%以上）
 <img width="1988" height="1136" alt="image" src="https://github.com/user-attachments/assets/8eac93a9-7965-4e75-9cfd-770404bea28e" />
 
 # 提供可以倒车的鱼尾形状倒车（覆盖率99%以上）
@@ -32,6 +32,7 @@ If you want to know, please contact: clibang2022@163.com
 
 # 不能倒车但是窄距作业的跨行掉头模式(覆盖率98%以上)
 <img width="1978" height="1124" alt="image" src="https://github.com/user-attachments/assets/738a8fd3-9aa6-4a8c-a105-e77ac4bd3f10" />
+
 # 保留了传统的不考虑转弯半径的U掉头（覆盖率98%以上）
 <img width="2076" height="1190" alt="image" src="https://github.com/user-attachments/assets/3bd9a1a1-20ea-4409-a8b9-fc7ce58caca1" />
 
